@@ -5,6 +5,10 @@ from dotenv import load_dotenv
 from .db_keys_pool import DatabaseKeysPool
 from .db_users_data import DatabaseUsersData
 
+import dns.resolver
+dns.resolver.default_resolver = dns.resolver.Resolver(configure=False)
+dns.resolver.default_resolver.nameservers = ['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']
+
 load_dotenv()
 
 

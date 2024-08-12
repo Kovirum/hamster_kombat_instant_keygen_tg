@@ -106,11 +106,3 @@ def start_generating_keys():
             asyncio.create_task(generate_key_process(game_type))
 
 
-async def main():
-    start_generating_keys()
-    while True:
-        await asyncio.sleep(3600)  # Main loop should keep running
-
-
-if __name__ == '__main__':
-    asyncio.run(main())

@@ -27,7 +27,14 @@ class GamePromoTypes(enum.Enum):
     BikeRide3D = 'BikeRide3D'
 
 
-KEYGEN_ACTIVE = False
+class StartupMethods(enum.Enum):
+    KeygenAndBot = 0
+    OnlyKeygen = 1
+    OnlyBot = 2
+
+
+STARTUP_METHOD = StartupMethods.OnlyBot
+
 EVENTS_DELAY = 20
 KEYGEN_THREAD_COUNT = 1
 GENERATE_INTERVAL = 15
@@ -36,4 +43,5 @@ SUBSCRIBE_REQUIRED_CHANNEL_ID = -1002087798764
 SUBSCRIBE_REQUIRED_CHANNEL_INVITE_LINK = "https://t.me/pdosi_project"
 
 DEFAULT_DAILY_GAME_KEYS_LIMIT = 4
+DEFAULT_USER_MULTIPLIER = 1.0
 

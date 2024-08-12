@@ -3,7 +3,7 @@ from aiogram.utils.formatting import as_list, Bold, as_numbered_section, Code
 
 from app.checkers import check_user_channel_subscription
 from config import GamePromoTypes
-from app.handlers.start import menu
+from app.handlers.commands import menu
 from app.keyboards import subcheck_markup, delmsg_markup
 from database import db
 from tools.utils import get_date
@@ -33,7 +33,7 @@ async def get_game_key_handler(callback: types.CallbackQuery):
             reply_markup=subcheck_markup)
     else:
         game = GamePromoTypes.__getitem__(callback.data)
-        user_available_keys = await db.users_data.get_pool_limit(game, callback.from_user.id)
+        user_available_keys, _ = await db.users_data.get_pool_limit(game, callback.from_user.id)
         game_key_pool_limit = await db.keys_pool.count_key_pool(game)
 
         if game_key_pool_limit <= 0:

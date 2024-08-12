@@ -1,9 +1,10 @@
 from datetime import datetime
 from datetime import timezone
+from typing import Tuple
 
 from pymongo import ReturnDocument
 
-from config import GamePromoTypes, DEFAULT_DAILY_GAME_KEYS_LIMIT
+from config import GamePromoTypes, DEFAULT_DAILY_GAME_KEYS_LIMIT, DEFAULT_USER_MULTIPLIER
 
 
 class DatabaseUsersData:
@@ -20,7 +21,6 @@ class DatabaseUsersData:
                 {"_id": user_id},
                 {
                     "$setOnInsert": {
-                        "pools": {},
                         "last_used_date": current_date,
                         "history": {}}
                 },
@@ -37,7 +37,6 @@ class DatabaseUsersData:
             user_doc = await self.collection.find_one_and_update(
                 {"_id": user_doc["_id"]},
                 {"$set": {
-                    "pools": {},
                     "last_used_date": current_date,
                     "history": {}
                 }},
@@ -45,29 +44,38 @@ class DatabaseUsersData:
             )
         return user_doc
 
-    async def get_pool_limit(self, game: GamePromoTypes, user_id: int) -> int:
+    async def get_pool_limit(self, game: GamePromoTypes, user_id: int) -> Tuple[int, int]:
+        """
+        Calculates the remaining key limit and total available keys for a user in a specific game.
+
+        Args:
+            game (GamePromoTypes): The type of game for which the key limit is calculated.
+            user_id (int): The user's identifier.
+
+        Returns:
+            Tuple[int, int]: A tuple where the first element is the remaining key limit,
+                             and the second element is the total available keys.
+        """
         user_doc = await self.init_user(user_id)
         game_keys_limit = user_doc.get('gkey_limit', DEFAULT_DAILY_GAME_KEYS_LIMIT)
-        already_used = user_doc['pools'].get(game.value, 0)
+        game_keys_limit = int(game_keys_limit * user_doc.get('gkey_multiplier', DEFAULT_USER_MULTIPLIER))
+        already_used = len(user_doc['history'].get(game.value, []))
 
-        return game_keys_limit - already_used
+        remaining_limit = game_keys_limit - already_used
+        total_available_keys = game_keys_limit
+
+        return remaining_limit, total_available_keys
 
     async def count_key_receive(self, game: GamePromoTypes, user_id: int, key: str) -> None:
         user_doc = await self.init_user(user_id)
-        user_pools = user_doc['pools']
         user_history = user_doc['history']
-        if game.value not in user_pools:
-            user_pools[game.value] = 0
         if game.value not in user_history:
             user_history[game.value] = []
-        user_pools[game.value] += 1
         user_history[game.value].append(key)
 
         await self.collection.update_one(
             {"_id": user_id},
-            {"$set": {
-                "pools": user_pools,
-                "history": user_history}}
+            {"$set": {"history": user_history}}
         )
 
     async def get_history_data(self, user_id: int) -> dict:
@@ -76,6 +84,6 @@ class DatabaseUsersData:
 
     async def test(self) -> None:
         await self.collection.update_many(
-            {"history": {"$exists": False}},
-            {"$set": {"history": {}}}
+            {},
+            {"$unset": {"pools": ''}}
         )
