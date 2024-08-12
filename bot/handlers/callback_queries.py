@@ -1,12 +1,11 @@
 from aiogram import F, types, Router, html
 from aiogram.utils.formatting import as_list, Bold, as_numbered_section, Code
 
-from app.checkers import check_user_channel_subscription
+from bot.logic import send_menu_reponse, check_user_channel_subscription
+from bot.keyboards import subcheck_markup, delmsg_markup
+from common.database import db
+from common.tools.utils import get_date
 from config import GamePromoTypes
-from app.handlers.commands import menu
-from app.keyboards import subcheck_markup, delmsg_markup
-from database import db
-from tools.utils import get_date
 
 router = Router()
 
@@ -21,7 +20,7 @@ async def check_subscription(callback: types.CallbackQuery):
         await callback.answer(text="The subscription is confirmed. Enjoy your use.",
                               show_alert=True)
         await callback.message.delete()
-        await menu(callback.message, callback.from_user.id)
+        await send_menu_reponse(callback.message, callback.from_user.id)
 
 
 @router.callback_query(F.data.in_([game.value for game in GamePromoTypes]))
@@ -53,7 +52,7 @@ async def get_game_key_handler(callback: types.CallbackQuery):
 async def update_menu_handler(callback: types.CallbackQuery):
     try:
         await callback.message.delete()
-        await menu(callback.message, callback.from_user.id)
+        await send_menu_reponse(callback.message, callback.from_user.id)
         await callback.answer()
     except Exception as e:
         await callback.answer(f"Failed to update menu: {e}", show_alert=True)

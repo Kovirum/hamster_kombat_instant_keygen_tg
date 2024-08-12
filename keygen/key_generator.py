@@ -4,9 +4,10 @@ import time
 import uuid
 import asyncio
 
-from config import GAME_PROMO_CONFIGS, EVENTS_DELAY, GENERATE_INTERVAL, GamePromoTypes, KEYGEN_THREAD_COUNT
-from database import db
-from tools.utils import get_timestamp
+from config import GamePromoTypes, GAME_PROMO_CONFIGS, EVENTS_DELAY, GENERATE_INTERVAL, KEYGEN_THREAD_COUNT
+
+from common.database import db
+from common.tools import get_timestamp
 
 
 async def generate_client_id():
