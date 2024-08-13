@@ -1,0 +1,21 @@
+{
+  "NATIVE_LANG_NAME": "हिन्दी",
+
+  "LANG_SELECTED": "बोट अब हिंदी में उत्तर देगा। यदि आप भाषा बदलना चाहते हैं, तो /start या /language कमांड का उपयोग करें",
+  "MUST_SUBSCRIBE_REQUIRED_CHANNEL": "पहले आपको Telegram चैनल की सदस्यता लेनी होगी। सदस्यता के बिना बोट काम नहीं करेगा।",
+  "SUBSCRIBE_REQUIRED_CHANNEL": "चैनल की सदस्यता लें",
+  "CHECK_SUBSCRIPTION": "सदस्यता की जाँच करें",
+  "NOT_SUBSCRIBED": "आपने चैनल की सदस्यता नहीं ली है",
+  "SUBSCRIBE_CONFIRMED": "सदस्यता की पुष्टि हो गई है। अब आप बोट का उपयोग कर सकते हैं",
+  "GAME_POOL_EMPTY": "इस खेल के लिए की पूल वर्तमान में खाली है। कृपया बाद में पुनः प्रयास करें",
+  "DAILY_KEY_LIMIT_REACHED": "आपने इस खेल के लिए दैनिक की सीमा को पार कर लिया है। सीमा हर दिन 00:00 UTC पर रीसेट होती है",
+  "KEY_RECEIVED": "खेल '{game_name}' के लिए की प्राप्त की गई: {key}",
+  "MENU_UPDATE_FAILED": "मेनू को अपडेट करने में विफल। त्रुटि: {error}",
+  "MESSAGE_DELETE_FAILED": "संदेश हटाने में विफल। त्रुटि: {error}",
+  "KEY_COLLECTION_HISTORY": "की संग्रह इतिहास ({date})",
+  "HISTORY_BUTTON_LABEL": "इतिहास",
+  "EMPTY": "खाली",
+  "POWERED_BY_LABEL": "Project PDoSI द्वारा विकसित",
+  "TOTAL_KEYS": "पूल में कुल की",
+  "AVAILABLE_DAILY_KEYS": "उपलब्ध दैनिक की:"
+}

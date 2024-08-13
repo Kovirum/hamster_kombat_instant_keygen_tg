@@ -1,0 +1,21 @@
+{
+  "NATIVE_LANG_NAME": "Español",
+
+  "LANG_SELECTED": "El bot ahora usará el español para las respuestas. Si deseas cambiar el idioma, usa el comando /start o /language",
+  "MUST_SUBSCRIBE_REQUIRED_CHANNEL": "Primero debes suscribirte al canal de Telegram. El bot no funcionará sin suscripción.",
+  "SUBSCRIBE_REQUIRED_CHANNEL": "Suscribirse al canal",
+  "CHECK_SUBSCRIPTION": "Verificar suscripción",
+  "NOT_SUBSCRIBED": "No estás suscrito al canal",
+  "SUBSCRIBE_CONFIRMED": "Suscripción confirmada. Ahora puedes usar el bot",
+  "GAME_POOL_EMPTY": "El grupo de claves para este juego está actualmente vacío. Inténtalo de nuevo más tarde",
+  "DAILY_KEY_LIMIT_REACHED": "Has alcanzado el límite diario de claves para este juego. El límite se restablece todos los días a las 00:00 UTC",
+  "KEY_RECEIVED": "Clave para el juego '{game_name}' recibida: {key}",
+  "MENU_UPDATE_FAILED": "No se pudo actualizar el menú. Error: {error}",
+  "MESSAGE_DELETE_FAILED": "No se pudo eliminar el mensaje. Error: {error}",
+  "KEY_COLLECTION_HISTORY": "Historial de recolección de claves ({date})",
+  "HISTORY_BUTTON_LABEL": "Historial",
+  "EMPTY": "Vacío",
+  "POWERED_BY_LABEL": "Desarrollado por Project PDoSI",
+  "TOTAL_KEYS": "Total de claves en el grupo",
+  "AVAILABLE_DAILY_KEYS": "Claves diarias disponibles:"
+}

@@ -1,0 +1,21 @@
+{
+  "NATIVE_LANG_NAME": "Русский",
+
+  "LANG_SELECTED": "Теперь бот будет использовать русский язык для ответов. Если захотите изменить язык, используйте команду /start или /language",
+  "MUST_SUBSCRIBE_REQUIRED_CHANNEL": "Сначала вы должны подписаться на телеграм-канал. Без подписки бот работать не будет.",
+  "SUBSCRIBE_REQUIRED_CHANNEL": "Подписаться на канал",
+  "CHECK_SUBSCRIPTION": "Проверить подписку",
+  "NOT_SUBSCRIBED": "Вы не подписались на канал",
+  "SUBSCRIBE_CONFIRMED": "Подписка подтверждена. Теперь вы можете использовать бота",
+  "GAME_POOL_EMPTY": "Пул ключей для этой игры сейчас пуст. Попробуйте ещё раз позже",
+  "DAILY_KEY_LIMIT_REACHED": "Вы достигли сегодняшнего лимита ключей для этой игры. Лимит обновляется каждый день в 0:00 UTC",
+  "KEY_RECEIVED": "Ключ для игры '{game_name}' получен: {key}",
+  "MENU_UPDATE_FAILED": "Не удалось обновить меню. Ошибка: {error}",
+  "MESSAGE_DELETE_FAILED": "Не удалось удалить сообщение. Ошибка: {error}",
+  "KEY_COLLECTION_HISTORY": "История получения ключей ({date})",
+  "HISTORY_BUTTON_LABEL": "История",
+  "EMPTY": "Пусто",
+  "POWERED_BY_LABEL": "Разработано Project PDoSI",
+  "TOTAL_KEYS": "Всего ключей в пуле",
+  "AVAILABLE_DAILY_KEYS": "Доступные ежедневные ключи:"
+}

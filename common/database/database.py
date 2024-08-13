@@ -1,4 +1,5 @@
 import os
+import logging
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 
@@ -30,5 +31,5 @@ class Database:
         self.keys_pool = DatabaseKeysPool(self._database, self._keys_collection)
         self.users_data = DatabaseUsersData(self._database, self._users_collection)
 
-        print("Database INITIALIZED")
+        logging.info("Database INITIALIZED")
 

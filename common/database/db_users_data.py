@@ -4,7 +4,7 @@ from typing import Tuple
 
 from pymongo import ReturnDocument
 
-from config import GamePromoTypes, DEFAULT_DAILY_GAME_KEYS_LIMIT, DEFAULT_USER_MULTIPLIER
+from config import GamePromoTypes, DEFAULT_DAILY_GAME_KEYS_LIMIT, DEFAULT_USER_MULTIPLIER, DEFAULT_LANGUAGE
 
 
 class DatabaseUsersData:
@@ -43,6 +43,14 @@ class DatabaseUsersData:
                 return_document=ReturnDocument.AFTER
             )
         return user_doc
+
+    async def set_user_language(self, user_id: int, lang_code: str):
+        user_doc = await self.init_user(user_id)
+        await self.collection.update_one({"_id": user_id}, {"$set": {"language": lang_code}})
+
+    async def get_user_language(self, user_id: int):
+        user_doc = await self.init_user(user_id)
+        return user_doc.get("language", DEFAULT_LANGUAGE)
 
     async def get_pool_limit(self, game: GamePromoTypes, user_id: int) -> Tuple[int, int]:
         """

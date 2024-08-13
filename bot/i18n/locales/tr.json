@@ -1,0 +1,21 @@
+{
+  "NATIVE_LANG_NAME": "Türkçe",
+
+  "LANG_SELECTED": "Bot artık yanıtlar için Türkçe kullanacak. Dili değiştirmek istiyorsanız, /start veya /language komutunu kullanın",
+  "MUST_SUBSCRIBE_REQUIRED_CHANNEL": "Öncelikle Telegram kanalına abone olmalısınız. Abonelik olmadan bot çalışmayacaktır.",
+  "SUBSCRIBE_REQUIRED_CHANNEL": "Kanalı Abone Ol",
+  "CHECK_SUBSCRIPTION": "Aboneliği Kontrol Et",
+  "NOT_SUBSCRIBED": "Kanalı abone olmadınız",
+  "SUBSCRIBE_CONFIRMED": "Abonelik onaylandı. Artık botu kullanabilirsiniz",
+  "GAME_POOL_EMPTY": "Bu oyun için anahtar havuzu şu anda boş. Lütfen daha sonra tekrar deneyin",
+  "DAILY_KEY_LIMIT_REACHED": "Bu oyun için günlük anahtar limitine ulaştınız. Limit her gün 00:00 UTC'de sıfırlanır",
+  "KEY_RECEIVED": "'{game_name}' oyunu için anahtar alındı: {key}",
+  "MENU_UPDATE_FAILED": "Menü güncellemesi başarısız oldu. Hata: {error}",
+  "MESSAGE_DELETE_FAILED": "Mesaj silme başarısız oldu. Hata: {error}",
+  "KEY_COLLECTION_HISTORY": "Anahtar toplama geçmişi ({date})",
+  "HISTORY_BUTTON_LABEL": "Geçmiş",
+  "EMPTY": "Boş",
+  "POWERED_BY_LABEL": "Project PDoSI tarafından geliştirildi",
+  "TOTAL_KEYS": "Havuzdaki toplam anahtar",
+  "AVAILABLE_DAILY_KEYS": "Mevcut günlük anahtarlar:"
+}

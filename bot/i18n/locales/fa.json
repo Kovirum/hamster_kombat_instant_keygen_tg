@@ -1,0 +1,21 @@
+{
+  "NATIVE_LANG_NAME": "فارسی",
+
+  "LANG_SELECTED": "اکنون ربات از زبان فارسی برای پاسخ‌ها استفاده خواهد کرد. اگر می‌خواهید زبان را تغییر دهید، از دستور /start یا /language استفاده کنید",
+  "MUST_SUBSCRIBE_REQUIRED_CHANNEL": "ابتدا باید در کانال تلگرام عضو شوید. بدون اشتراک، ربات کار نخواهد کرد.",
+  "SUBSCRIBE_REQUIRED_CHANNEL": "عضو شدن در کانال",
+  "CHECK_SUBSCRIPTION": "بررسی اشتراک",
+  "NOT_SUBSCRIBED": "شما در کانال عضو نشده‌اید",
+  "SUBSCRIBE_CONFIRMED": "اشتراک تایید شد. اکنون می‌توانید از ربات استفاده کنید",
+  "GAME_POOL_EMPTY": "مجموعه کلیدهای این بازی در حال حاضر خالی است. لطفاً بعداً دوباره امتحان کنید",
+  "DAILY_KEY_LIMIT_REACHED": "شما به حد کلید روزانه برای این بازی رسیده‌اید. این حد هر روز ساعت 00:00 UTC بازنشانی می‌شود",
+  "KEY_RECEIVED": "کلید بازی '{game_name}' دریافت شد: {key}",
+  "MENU_UPDATE_FAILED": "عدم موفقیت در به‌روزرسانی منو. خطا: {error}",
+  "MESSAGE_DELETE_FAILED": "عدم موفقیت در حذف پیام. خطا: {error}",
+  "KEY_COLLECTION_HISTORY": "تاریخچه جمع‌آوری کلیدها ({date})",
+  "HISTORY_BUTTON_LABEL": "تاریخچه",
+  "EMPTY": "خالی",
+  "POWERED_BY_LABEL": "توسعه یافته توسط Project PDoSI",
+  "TOTAL_KEYS": "کلیدهای موجود در مجموعه",
+  "AVAILABLE_DAILY_KEYS": "کلیدهای روزانه موجود:"
+}
