@@ -105,7 +105,7 @@ async def generate_key_process(game_promo_type: GamePromoTypes):
 
 
 def start_generating_keys():
-    for game_type in (GamePromoTypes.MergeAway, GamePromoTypes.TwerkRace):  # for game_type in GamePromoTypes:
+    for game_type in GamePromoTypes:
         for _ in range(KEYGEN_THREAD_COUNT):
             asyncio.create_task(generate_key_process(game_type))
 

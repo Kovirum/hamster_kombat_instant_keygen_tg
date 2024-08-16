@@ -1,6 +1,6 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from config import SUBSCRIBE_REQUIRED_CHANNEL_INVITE_LINK, GamePromoTypes
+from config import PROJECT_PDOSI_INVITE_URL, GamePromoTypes
 from .delete_message_kb import delmsg_button
 
 from bot.i18n import i18n_manager
@@ -16,9 +16,10 @@ async def get_menu_markup(lang_code: str) -> InlineKeyboardMarkup:
     builder.row(InlineKeyboardButton(
         text=await i18n_manager.get_translation(lang_code, "HISTORY_BUTTON_LABEL"),
         callback_data="history_menu"))
+    # YOU MUST KEEP THIS LINK OR OTHER MENTION OF AUTHORSHIP IN ORDER TO PRESERVE THE LICENSE
     builder.row(InlineKeyboardButton(
         text=await i18n_manager.get_translation(lang_code, "POWERED_BY_LABEL"),
-        url=SUBSCRIBE_REQUIRED_CHANNEL_INVITE_LINK))
+        url=PROJECT_PDOSI_INVITE_URL))
 
     menu_markup = builder.as_markup()
     return menu_markup
