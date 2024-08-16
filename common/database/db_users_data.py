@@ -45,7 +45,7 @@ class DatabaseUsersData:
         return user_doc
 
     async def set_user_language(self, user_id: int, lang_code: str):
-        user_doc = await self.init_user(user_id)
+        await self.init_user(user_id)
         await self.collection.update_one({"_id": user_id}, {"$set": {"language": lang_code}})
 
     async def get_user_language(self, user_id: int):
@@ -90,8 +90,3 @@ class DatabaseUsersData:
         user_doc = await self.init_user(user_id)
         return user_doc['history']
 
-    async def test(self) -> None:
-        await self.collection.update_many(
-            {},
-            {"$unset": {"pools": ''}}
-        )

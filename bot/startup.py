@@ -1,7 +1,7 @@
 import os
 
+import aiogram
 from aiogram import Bot, Dispatcher
-from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
@@ -14,7 +14,7 @@ load_dotenv()
 
 bot = Bot(
     token=os.getenv('BOT_TOKEN'),
-    default= DefaultBotProperties(
+    default=aiogram.client.default.DefaultBotProperties(
         parse_mode=ParseMode.HTML
     ))
 dp = Dispatcher(storage=MemoryStorage())
