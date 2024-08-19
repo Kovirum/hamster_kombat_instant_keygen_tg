@@ -6,7 +6,7 @@ import time
 import uuid
 import asyncio
 
-from config import GamePromoTypes, GAME_PROMO_CONFIGS, EVENTS_DELAY, GENERATE_INTERVAL, KEYGEN_THREAD_COUNT
+from config import GamePromoTypes, GAME_PROMO_CONFIGS, GENERATE_INTERVAL, KEYGEN_THREAD_COUNT
 from config import STARTUP_METHOD, StartupMethods
 
 from common.database import db
@@ -87,8 +87,8 @@ async def generate_key_process(game_promo_type: GamePromoTypes):
                 client_id = await generate_client_id()
                 client_token = await login(session, client_id, game_data)
                 logging.info(f"[{get_timestamp()}] Logged in. Game: {game_promo_type.value}")
-                for _ in range(12):
-                    await sleep(EVENTS_DELAY * delay_random())
+                for _ in range(game_data['attemptsNumber']):
+                    await sleep(game_data['eventsDelay'] * delay_random())
                     try:
                         has_code = await emulate_progress(session, client_token, game_data)
                     except Exception as e:
@@ -97,6 +97,9 @@ async def generate_key_process(game_promo_type: GamePromoTypes):
                     if has_code:
                         break
                 key = await generate_key(session, client_token, game_data)
+                if len(key) < 1:
+                    logging.warning(f"[{get_timestamp()}] Failed to get key for {game_promo_type.value}. Skipping")
+                    continue
                 await db.keys_pool.insert_key(game_promo_type, key)
                 logging.info(f"[{get_timestamp()}] New key generated: {game_promo_type.value}")
             except Exception as e:
