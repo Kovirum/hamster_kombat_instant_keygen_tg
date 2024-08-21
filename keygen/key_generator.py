@@ -6,7 +6,7 @@ import time
 import uuid
 import asyncio
 
-from config import GamePromoTypes, GAME_PROMO_CONFIGS, GENERATE_INTERVAL, KEYGEN_THREAD_COUNT
+from config import GamePromoTypes, GAME_PROMO_CONFIGS, GENERATE_INTERVAL, KEYGEN_THREAD_COUNT, KEYGEN_GAMES
 from config import STARTUP_METHOD, StartupMethods
 
 from common.database import db
@@ -108,7 +108,7 @@ async def generate_key_process(game_promo_type: GamePromoTypes):
 
 
 def start_generating_keys():
-    for game_type in GamePromoTypes:
+    for game_type in KEYGEN_GAMES:
         for _ in range(KEYGEN_THREAD_COUNT):
             asyncio.create_task(generate_key_process(game_type))
 

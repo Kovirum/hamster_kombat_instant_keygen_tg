@@ -5,7 +5,7 @@ GAME_PROMO_CONFIGS = {
         'appToken': '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
         'promoId': 'fe693b26-b342-4159-8808-15e3ff7f8767',
         'eventsDelay': 120,
-        'attemptsNumber': 15
+        'attemptsNumber': 20
     },
     'ChainCube2048': {
         'appToken': 'd1690a07-3780-4068-810f-9b5bbf2931b2',
@@ -37,6 +37,12 @@ GAME_PROMO_CONFIGS = {
         'eventsDelay': 20,
         'attemptsNumber': 10
     },
+    'Polysphere': {
+        'appToken': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
+        'promoId': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
+        'eventsDelay': 20,
+        'attemptsNumber': 20
+    }
 }
 
 
@@ -47,6 +53,7 @@ class GamePromoTypes(enum.Enum):
     BikeRide3D = 'BikeRide3D'
     MergeAway = 'MergeAway'
     TwerkRace = 'TwerkRace'
+    Polysphere = 'Polysphere'
 
 
 class StartupMethods(enum.Enum):
@@ -58,6 +65,7 @@ class StartupMethods(enum.Enum):
 STARTUP_METHOD = StartupMethods.KeygenAndBot
 
 KEYGEN_THREAD_COUNT = 1
+KEYGEN_GAMES = [g for g in GamePromoTypes]
 GENERATE_INTERVAL = 25
 
 DEFAULT_LANGUAGE = 'en'  # LANGUAGE CODE
