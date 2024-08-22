@@ -65,5 +65,8 @@ If you cannot connect to the internet, check the following:
 
 - Ensure that the port and address are correct.
 - Make sure that your proxy server is operational and accessible.
-- Do not use free proxy servers to transfer confidential information. Such servers are also unstable and may not work
-- If your https proxy is not working, try changing the protocol to http://
+
+### Notes:
+- We do not recommend that you use free proxies. They are unsafe and may not work correctly.
+- If your `https` proxy is not working, try changing the protocol to `http://`
+- At the initial launch, the proxy may give several errors. If the work has returned to normal after that, then everything is fine.
