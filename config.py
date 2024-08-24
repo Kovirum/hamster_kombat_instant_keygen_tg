@@ -57,17 +57,7 @@ GAME_PROMO_CONFIGS = {
     }
 }
 
-
-class GamePromoTypes(enum.Enum):
-    MyCloneArmy = 'MyCloneArmy'
-    ChainCube2048 = 'ChainCube2048'
-    TrainMiner = 'TrainMiner'
-    BikeRide3D = 'BikeRide3D'
-    MergeAway = 'MergeAway'
-    TwerkRace = 'TwerkRace'
-    Polysphere = 'Polysphere'
-    MowAndTrim = 'MowAndTrim'
-    MudRacing = 'MudRacing'
+GamePromoTypes = enum.Enum('GamePromoTypes', {k: k for k in GAME_PROMO_CONFIGS.keys()})
 
 
 class StartupMethods(enum.Enum):
