@@ -102,9 +102,9 @@ Setting the default values involves changing only 2 constants:
 - the object of the subscription-required channel looks like this:
   ```json
   {
-    'name': 'channel name',
-    'id': -1001234567890,
-    'invite_link': 'channel invite link'
+    "name": "channel name",
+    "id": -1001234567890,
+    "invite_link": "channel invite link"
   }
   ```
   The object consists of 3 required fields:
@@ -114,9 +114,9 @@ Setting the default values involves changing only 2 constants:
 > **Info:**
 > In fact, for the bot's logic to work, only the channel id needs to be correctly specified, the rest of the values do not require strict binding specifically to the desired channel, so you can, for example, simply set the names of the channels as "Channel 1", "Channel 2" and so on. You can also specify any links that users will click on. The main thing is that in the end they still lead to the right channel, otherwise the user will not be able to fulfill the conditions for obtaining access.
 
-Also an example of what a properly configured `SUBSCRIBE_REQUIRED_CHANNEL_LIST` might look like:
+Also, an example of what a properly configured `SUBSCRIBE_REQUIRED_CHANNEL_LIST` might look like:
 - Single channel:
-```json
+```python
 SUBSCRIBE_REQUIRED_CHANNEL_LIST = [
   {
     "name": 'Project PDoSi', 
@@ -126,7 +126,7 @@ SUBSCRIBE_REQUIRED_CHANNEL_LIST = [
 ]
 ```
 - Multiple channels:
-```json
+```python
 SUBSCRIBE_REQUIRED_CHANNEL_LIST = [
   {
     'name': 'Project PDoSi', 
@@ -141,7 +141,7 @@ SUBSCRIBE_REQUIRED_CHANNEL_LIST = [
 ]
 ```
 - No channels (disable the requirement):
-```json
+```python
 SUBSCRIBE_REQUIRED_CHANNEL_LIST = []
 ```
 ## MongoDB Setup

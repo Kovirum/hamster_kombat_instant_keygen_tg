@@ -4,10 +4,10 @@ This guide provides an overview of the main features and commands available in t
 
 ## Main Commands
 
-- **/start**: Initial message with language selection.
-- **/menu**: Main menu where users can generate keys.
-- **/language**: Change the language of the bot.
-- **/myid**: Retrieve your Telegram UserID.
+- `/start`: Initial message with language selection.
+- `/menu`: Main menu where users can generate keys.
+- `/language`: Change the language of the bot.
+- `/myid`: Retrieve your Telegram UserID.
 
 ## Key Generation
 
@@ -15,7 +15,7 @@ Keys are generated through the main menu, accessible after selecting a language 
 
 ## Key collection history
 
-Using the `/history` command you can access the history of all keys received on the current day. This is useful if you accidentally deleted a key or just want to combine all the keys you received in one place.
+Using the **History** button in the menu called by the `/menu` command you can access the history of all keys received on the current day. This is useful if you accidentally deleted a key or just want to combine all the keys you received in one place.
 
 ## Updating daily limits
 
