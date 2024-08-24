@@ -82,9 +82,8 @@ KEYGEN_THREAD_COUNT = 1
 KEYGEN_GAMES = [g for g in GamePromoTypes]
 GENERATE_INTERVAL = 25
 
-DEFAULT_LANGUAGE = 'en'  # LANGUAGE CODE
-SUBSCRIBE_REQUIRED_CHANNEL_ID = -1002087798764
-SUBSCRIBE_REQUIRED_CHANNEL_INVITE_LINK = "https://t.me/pdosi_project"
+DEFAULT_LANGUAGE = 'en'  # it is required to specify one of the codes from the bot/i18n/locales directory
+SUBSCRIBE_REQUIRED_CHANNEL_LIST = []  # If you have no idea what needs to be entered here, read the documentation
 
 DEFAULT_DAILY_GAME_KEYS_LIMIT = 4
 DEFAULT_USER_MULTIPLIER = 1.0

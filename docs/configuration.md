@@ -95,11 +95,55 @@ Setting the default values involves changing only 2 constants:
 > ```
 
 ### Set up a subscription channel:
-- In `SUBSCRIBE_REQUIRED_CHANNEL_ID` , you need to specify the ID of the channel that people will need to subscribe to in order to use the bot. You can set this value to `None` to cancel this requirement.
+- In the "SUBSCRIBE_REQUIRED_CHANNEL_LIST" field, you need to specify a list of objects of a certain type (examples will be below) in order to set a requirement for bot users to be subscribed to the specified telegram channels. This requirement applies to the /menu command and getting keys from the pool. The rest of the actions can be performed by any user, regardless of whether they have fulfilled the subscription requirement. 
+- You can leave this list empty. In this case, the requirements will be completely canceled for all participants.
 > **Warning:**
-> If you specify a value other than `None` as the `SUBSCRIBE_REQUIRED_CHANNEL_ID`, you must invite the bot to the specified channel as an administrator. Otherwise, the subscription verification will always fail.
-- In `SUBSCRIBE_REQUIRED_CHANNEL_INVITE_LINK` you need to specify a link to the channel you want to subscribe to. This value will be assigned to the url of the subscribe channel button.  
+> If you register any channels in the "SUBSCRIBE_REQUIRED_CHANNEL_LIST", you must invite the bot to all specified channels as an administrator. Otherwise, subscription verification will always fail.
+- the object of the subscription-required channel looks like this:
+  ```json
+  {
+    'name': 'channel name',
+    'id': -1001234567890,
+    'invite_link': 'channel invite link'
+  }
+  ```
+  The object consists of 3 required fields:
+- `name` - The name of the channel that will be displayed on the channel subscription button
+- `id` - The channel ID required to verify the user's subscription to the specified channel
+- `invite_link` - The link that will be assigned to the channel button. when clicking on it, the user will follow this link.
+> **Info:**
+> In fact, for the bot's logic to work, only the channel id needs to be correctly specified, the rest of the values do not require strict binding specifically to the desired channel, so you can, for example, simply set the names of the channels as "Channel 1", "Channel 2" and so on. You can also specify any links that users will click on. The main thing is that in the end they still lead to the right channel, otherwise the user will not be able to fulfill the conditions for obtaining access.
 
+Also an example of what a properly configured `SUBSCRIBE_REQUIRED_CHANNEL_LIST` might look like:
+- Single channel:
+```json
+SUBSCRIBE_REQUIRED_CHANNEL_LIST = [
+  {
+    "name": 'Project PDoSi', 
+    "id": -1002087798764, 
+    "invite_link": 'https://t.me/pdosi_project'
+  }
+]
+```
+- Multiple channels:
+```json
+SUBSCRIBE_REQUIRED_CHANNEL_LIST = [
+  {
+    'name': 'Project PDoSi', 
+    'id': -1002087798764, 
+    'invite_link': 'https://t.me/pdosi_project'
+  }, 
+  {
+    'name': 'Kovirum Development', 
+    'id': -1001786943119, 
+    'invite_link': 'https://t.me/kovirum_reviews'
+    }
+]
+```
+- No channels (disable the requirement):
+```json
+SUBSCRIBE_REQUIRED_CHANNEL_LIST = []
+```
 ## MongoDB Setup
 
 The MongoDB instance does not require manual setup. The script will automatically create the necessary database, collections, and documents.

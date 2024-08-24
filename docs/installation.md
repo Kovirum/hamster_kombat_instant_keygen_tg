@@ -36,11 +36,16 @@ This guide provides step-by-step instructions on how to install and set up the H
     - `OnlyBot = 2`: Run only the Telegram bot.
 
 5. **Set up a subscription channel:**
-   - In `SUBSCRIBE_REQUIRED_CHANNEL_ID` , you need to specify the ID of the channel that people will need to subscribe to in order to use the bot. You can set this value to `None` to cancel this requirement.
-   > **Warning:**
-   > If you specify a value other than `None` as the `SUBSCRIBE_REQUIRED_CHANNEL_ID`, you must invite the bot to the specified channel as an administrator. Otherwise, the subscription verification will always fail.
-   - In `SUBSCRIBE_REQUIRED_CHANNEL_INVITE_LINK` you need to specify a link to the channel you want to subscribe to. This value will be assigned to the url of the subscribe channel button.  
-
+   In the `SUBSCRIBE_REQUIRED_CHANNEL_LIST` you must specify a list of objects of the following type:
+   ```json
+   {
+      "name": "channel name",
+      "id": -100123456789,
+      "invite_link": "channel invite link" 
+   }
+   ```
+   You can also leave this list empty. In this case, subscription verification will be disabled and the bot will be available without restrictions.\
+   You can read get details here: [Set up a subscription channel](configuration.md#set-up-a-subscription-channel)
 6. **Running the Application:**
     ```bash
     python main.py
