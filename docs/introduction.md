@@ -17,6 +17,8 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 - Merge Away
 - Twerk Race
 - Polysphere
+- Mow and Trim
+- Mud Racing
 
 ## Supported Languages
 
