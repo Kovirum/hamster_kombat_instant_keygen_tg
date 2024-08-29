@@ -10,7 +10,6 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 
 ## Supported Games
 
-- My Clone Army
 - Chain Cube 2048
 - Train Miner
 - Bike Ride 3D
@@ -19,6 +18,7 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 - Polysphere
 - Mow and Trim
 - Mud Racing
+- Cafe Dash
 
 ## Supported Languages
 
