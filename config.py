@@ -66,7 +66,7 @@ class StartupMethods(enum.Enum):
     OnlyBot = 2
 
 
-STARTUP_METHOD = StartupMethods.KeygenAndBot
+STARTUP_METHOD = StartupMethods.OnlyBot
 
 KEYGEN_THREAD_COUNT = 1
 KEYGEN_GAMES = [g for g in GamePromoTypes]
@@ -77,6 +77,7 @@ SUBSCRIBE_REQUIRED_CHANNEL_LIST = []  # If you have no idea what needs to be ent
 
 DEFAULT_DAILY_GAME_KEYS_LIMIT = 4
 DEFAULT_USER_MULTIPLIER = 1.0
+DEFAULT_NUM_KEYS_PER_REQUEST = 1
 
 # YOU MUST KEEP THIS LINK OR OTHER MENTION OF AUTHORSHIP IN ORDER TO PRESERVE THE LICENSE
 PROJECT_PDOSI_INVITE_URL = "https://t.me/pdosi_project"

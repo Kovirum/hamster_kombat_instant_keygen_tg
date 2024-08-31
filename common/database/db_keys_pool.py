@@ -1,4 +1,6 @@
 import logging
+from typing import List
+
 from pymongo import ReturnDocument
 
 from config import GamePromoTypes
@@ -20,21 +22,38 @@ class DatabaseKeysPool:
         except Exception as e:
             logging.error(f"Failed to insert key: {e}")
 
-    async def get_key(self, game: GamePromoTypes) -> str | None:
-        """Retrieves and deletes the first key from the key pool for the game."""
+    async def get_keys(self, game: GamePromoTypes, count: int, limit: int) -> List[str] | None:
+        """Retrieves and deletes the specified number of keys from the list of keys for the game."""
+        key_count = min(count, limit)
         try:
-            update_query = {"$pop": {"keys": -1}}
+            filter_query = {"_id": game.value, "keys.0": {"$exists": True}}
             game_doc = await self.collection.find_one_and_update(
-                {"_id": game.value, "keys.0": {"$exists": True}},
-                update_query,
+                filter_query,
+                [
+                    {
+                        '$set': {
+                            'keys': {
+                                '$cond': {
+                                    'if': {'$gt': [{'$size': '$keys'}, key_count]},
+                                    'then': {
+                                        '$slice': ['$keys', key_count, {'$subtract': [{'$size': '$keys'}, key_count]}]
+                                    },
+                                    'else': []
+                                }
+                            }
+                        }
+                    }
+                ],
                 return_document=ReturnDocument.BEFORE
             )
-            if game_doc and "keys" in game_doc and game_doc["keys"]:
-                return game_doc["keys"][0]
+
+            if game_doc and game_doc.get('keys'):
+                return game_doc['keys'][:key_count]
             else:
                 return None
+
         except Exception as e:
-            logging.error(f"Failed to get key: {e}")
+            logging.error(f"Failed to get keys: {e}")
             return None
 
     async def count_key_pool(self, game: GamePromoTypes) -> int:

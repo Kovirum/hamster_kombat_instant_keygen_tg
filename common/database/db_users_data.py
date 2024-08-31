@@ -1,6 +1,6 @@
 from datetime import datetime
 from datetime import timezone
-from typing import Tuple
+from typing import Tuple, List
 
 from pymongo import ReturnDocument
 
@@ -74,12 +74,12 @@ class DatabaseUsersData:
 
         return remaining_limit, total_available_keys
 
-    async def count_key_receive(self, game: GamePromoTypes, user_id: int, key: str) -> None:
+    async def count_key_receive(self, game: GamePromoTypes, user_id: int, keys: List[str]) -> None:
         user_doc = await self.init_user(user_id)
         user_history = user_doc['history']
         if game.value not in user_history:
             user_history[game.value] = []
-        user_history[game.value].append(key)
+        user_history[game.value].extend(keys)
 
         await self.collection.update_one(
             {"_id": user_id},

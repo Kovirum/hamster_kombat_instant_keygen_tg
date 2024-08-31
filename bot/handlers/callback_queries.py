@@ -6,7 +6,7 @@ from bot.keyboards import get_subscription_check_markup, delmsg_markup
 from bot.i18n import i18n_manager
 from common.database import db
 from common.tools.utils import get_date
-from config import GamePromoTypes
+from config import GamePromoTypes, DEFAULT_NUM_KEYS_PER_REQUEST
 
 router = Router()
 
@@ -56,13 +56,17 @@ async def get_game_key_handler(callback: types.CallbackQuery):
                 await i18n_manager.get_translation(lang_code, "DAILY_KEY_LIMIT_REACHED"),
                 show_alert=True)
 
-        key = await db.keys_pool.get_key(game)
-        await db.users_data.count_key_receive(game, callback.from_user.id, key)
+        keys = await db.keys_pool.get_keys(game, DEFAULT_NUM_KEYS_PER_REQUEST, user_available_keys)
+        if not keys:
+            return await callback.answer(
+                await i18n_manager.get_translation(lang_code, "KEY_RECEIVE_ERROR"),
+                show_alert=True)
+        await db.users_data.count_key_receive(game, callback.from_user.id, keys)
 
         await callback.message.answer(
             text=(await i18n_manager.get_translation(lang_code, "KEY_RECEIVED")).format(
                 game_name=callback.data,
-                key=html.code(key)
+                keys='\n'.join([f"{num}. {html.code(key)}" for num, key in enumerate(keys, 1)])
             ),
             reply_markup=delmsg_markup)
         await callback.answer()

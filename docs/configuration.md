@@ -80,21 +80,25 @@ Proxy configuration is described in detail in [Proxy Setup](proxy-setup)
 ## Bot Setup
 Setting up the bot involves specifying default limits, required channel subscriptions, and more
 
-### Setting up Key limits 
-Setting limits can take place in 2 stages: 
+### Setting limits and issuing keys
+Setting up limits and issuing keys includes the following steps:
 1. Setting the default values (described here) 
 2. Setting personal values for an individual user (described below in the **MongoDB Setup** section)
 
-Setting the default values involves changing only 2 constants:
+Setting the default values involves changing only 3 constants:
 1. `DEFAULT_DAILY_GAME_KEYS_LIMIT` - key limit for 1 single game
 2. `DEFAULT_USER_MULTIPLIER` - key limit multiplier for 1 individual game
+3. `DEFAULT_NUM_KEYS_PER_REQUEST` - The number of keys that will be issued to the user upon request. The final number is the minimum of the following values: 
+   - this constant
+   - user key limit (from the formula below) 
+   - remaining number of keys in the pool.
 > **Info**
 > The key limit is calculation using this formula:
 > ```python
 > user.get("gkey_limit") or DEFAULT_DAILY_GAME_KEYS_LIMIT * user.get("gkey_multiplier") * DEFAULT_USER_MULTIPLIER
 > ```
 
-### Set up a subscription channel:
+### Set up a subscription channels:
 - In the "SUBSCRIBE_REQUIRED_CHANNEL_LIST" field, you need to specify a list of objects of a certain type (examples will be below) in order to set a requirement for bot users to be subscribed to the specified telegram channels. This requirement applies to the /menu command and getting keys from the pool. The rest of the actions can be performed by any user, regardless of whether they have fulfilled the subscription requirement. 
 - You can leave this list empty. In this case, the requirements will be completely canceled for all participants.
 > **Warning:**
