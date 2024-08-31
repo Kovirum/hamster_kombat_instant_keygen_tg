@@ -66,7 +66,7 @@ class StartupMethods(enum.Enum):
     OnlyBot = 2
 
 
-STARTUP_METHOD = StartupMethods.OnlyBot
+STARTUP_METHOD = StartupMethods.KeygenAndBot
 
 KEYGEN_THREAD_COUNT = 1
 KEYGEN_GAMES = [g for g in GamePromoTypes]
@@ -81,3 +81,6 @@ DEFAULT_NUM_KEYS_PER_REQUEST = 1
 
 # YOU MUST KEEP THIS LINK OR OTHER MENTION OF AUTHORSHIP IN ORDER TO PRESERVE THE LICENSE
 PROJECT_PDOSI_INVITE_URL = "https://t.me/pdosi_project"
+
+ADMIN_ACCESS_IDS = []
+REQUEST_BROADCAST_CONFIRM = True

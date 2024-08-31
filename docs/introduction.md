@@ -12,13 +12,13 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 
 - Chain Cube 2048
 - Train Miner
-- Bike Ride 3D
 - Merge Away
 - Twerk Race
 - Polysphere
 - Mow and Trim
-- Mud Racing
 - Cafe Dash
+- Gangs Wars
+- Zoopolis
 
 ## Supported Languages
 

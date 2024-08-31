@@ -1,7 +1,8 @@
 from aiogram import F, types, Router, html
 from aiogram.utils.formatting import as_list, Bold, as_numbered_section, Code
 
-from bot.logic import send_menu_reponse, check_user_channel_subscription
+from bot.keyboards.broadcast_manage_subscribe_kb import get_broadcast_manage_markup
+from bot.logic import send_menu_response, check_user_channel_subscription
 from bot.keyboards import get_subscription_check_markup, delmsg_markup
 from bot.i18n import i18n_manager
 from common.database import db
@@ -17,7 +18,7 @@ async def lang_selector_handler(callback: types.CallbackQuery):
     await db.users_data.set_user_language(callback.from_user.id, lang_code)
     await callback.message.delete()
     await callback.message.answer(text=await i18n_manager.get_translation(lang_code, "LANG_SELECTED"))
-    await send_menu_reponse(callback.message, callback.from_user.id)
+    await send_menu_response(callback.message, callback.from_user.id)
 
 
 @router.callback_query(F.data == 'check_subscription')
@@ -31,7 +32,7 @@ async def check_subscription(callback: types.CallbackQuery):
         await callback.answer(text=await i18n_manager.get_translation(lang_code, "SUBSCRIBE_CONFIRMED"),
                               show_alert=True)
         await callback.message.delete()
-        await send_menu_reponse(callback.message, callback.from_user.id)
+        await send_menu_response(callback.message, callback.from_user.id)
 
 
 @router.callback_query(F.data.in_([game.value for game in GamePromoTypes]))
@@ -76,7 +77,7 @@ async def get_game_key_handler(callback: types.CallbackQuery):
 async def update_menu_handler(callback: types.CallbackQuery):
     try:
         await callback.message.delete()
-        await send_menu_reponse(callback.message, callback.from_user.id)
+        await send_menu_response(callback.message, callback.from_user.id)
         await callback.answer()
     except Exception as e:
         lang_code = await db.users_data.get_user_language(callback.from_user.id)
@@ -111,6 +112,28 @@ async def history_menu_handler(callback: types.CallbackQuery):
     )
     await callback.message.answer(text=response.as_html(), reply_markup=delmsg_markup)
     await callback.answer()
+
+
+@router.callback_query(F.data.in_(['broadcast_subscribe', 'broadcast_unsubscribe']))
+async def broadcast_subscribe_handler(callback: types.CallbackQuery):
+    lang_code = await db.users_data.get_user_language(callback.from_user.id)
+    user_doc = await db.users_data.change_broadcast_subscribe_status(callback.from_user.id)
+
+    await callback.answer(await i18n_manager.get_translation(lang_code, "SUBSCRIPTION_SETTINGS_UPDATED"))
+
+    markup = await get_broadcast_manage_markup(user_doc['broadcast'], lang_code)
+
+    status_text = await i18n_manager.get_translation(
+        lang_code,
+        "SUBSCRIPTION_ACTIVE" if user_doc['broadcast'] else "SUBSCRIPTION_INACTIVE"
+    )
+
+    await callback.message.delete()
+    await callback.message.answer(
+        text=(await i18n_manager.get_translation(lang_code, "CURRENT_BROADCAST_SUBSCRIPTION_STATUS")).format(
+            status=status_text),
+        reply_markup=markup
+    )
 
 
 def register_callback_queries_handler(dp):

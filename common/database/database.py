@@ -24,7 +24,7 @@ class Database:
 
     def _initialize(self):
         self._client = AsyncIOMotorClient(os.getenv('DB_URL'))
-        self._database = self._client.get_database("hamster_keygen_tg_db")
+        self._database = self._client.get_database("hamster_keygen_tg_db_debug")
         self._keys_collection = self._database.get_collection("keys")
         self._users_collection = self._database.get_collection("users")
 
@@ -32,4 +32,3 @@ class Database:
         self.users_data = DatabaseUsersData(self._database, self._users_collection)
 
         logging.info("Database INITIALIZED")
-

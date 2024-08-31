@@ -148,6 +148,13 @@ SUBSCRIBE_REQUIRED_CHANNEL_LIST = [
 ```python
 SUBSCRIBE_REQUIRED_CHANNEL_LIST = []
 ```
+### Configuring Admin Tools
+The bot has its own admin panel (called using `/admin`). 
+Only users who are listed in `ADMIN_ACCESS_IDS` have access to this panel, all others will receive an error (even if you own a bot). 
+The admin panel includes:
+- A system for mass mailing of messages to bot users. Allows you to send messages to bot users containing text, an image, as well as several inline buttons with a link.
+    - The config has the value `REQUEST_BROADCAST_CONFIRM`. It is responsible for whether the user can unsubscribe from the mailing list and not receive messages. If set to `True`, the user will receive the message only when subscribing to the newsletter via `/broadcast`. If set to `False`, the newsletter will be sent to all users regardless of their settings.
+
 ## MongoDB Setup
 
 The MongoDB instance does not require manual setup. The script will automatically create the necessary database, collections, and documents.

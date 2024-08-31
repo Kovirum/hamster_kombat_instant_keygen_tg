@@ -4,7 +4,8 @@ from typing import Tuple, List
 
 from pymongo import ReturnDocument
 
-from config import GamePromoTypes, DEFAULT_DAILY_GAME_KEYS_LIMIT, DEFAULT_USER_MULTIPLIER, DEFAULT_LANGUAGE
+from config import GamePromoTypes, DEFAULT_DAILY_GAME_KEYS_LIMIT, DEFAULT_USER_MULTIPLIER, DEFAULT_LANGUAGE, \
+    REQUEST_BROADCAST_CONFIRM
 
 
 class DatabaseUsersData:
@@ -90,3 +91,21 @@ class DatabaseUsersData:
         user_doc = await self.init_user(user_id)
         return user_doc['history']
 
+    async def get_users_for_broadcast(self):
+        cursor = self.collection.find(
+            {'broadcast': True} if REQUEST_BROADCAST_CONFIRM else {},
+            {'_id': 1}
+        )
+
+        user_ids = [doc['_id'] for doc in await cursor.to_list(length=None)]
+        return user_ids
+
+    async def change_broadcast_subscribe_status(self, user_id: int) -> dict:
+        """Changes the broadcast subscription status to the opposite and returns the modified document"""
+        user_doc = await self.init_user(user_id)
+        if not user_doc.get('broadcast'):
+            user_doc['broadcast'] = True
+        else:
+            user_doc['broadcast'] = False
+        await self.collection.update_one({"_id": user_id}, {"$set": {"broadcast": user_doc['broadcast']}})
+        return user_doc

@@ -7,7 +7,11 @@ This guide provides an overview of the main features and commands available in t
 - `/start`: Initial message with language selection.
 - `/menu`: Main menu where users can generate keys.
 - `/language`: Change the language of the bot.
-- `/myid`: Retrieve your Telegram UserID.
+- `/myid`: Retrieve your Telegram UserID.s
+- `/broadcast`: Subscribe to the broadcast from the administrators
+- `/admin`: Admin panel with additional settings and built-in functions
+    > **Info:**
+    Any setting in the admin panel works at the expense of finite state machines (FSM). They start working from the moment you select the type of setting and until they are completed. You can reset the configuration process by entering the command `/admin`
 
 ## Key Generation
 

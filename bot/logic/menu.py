@@ -8,7 +8,7 @@ from common.database import db
 from config import GamePromoTypes
 
 
-async def send_menu_reponse(message: types.Message, user_id: int):
+async def send_menu_response(message: types.Message, user_id: int):
     lang_code = await db.users_data.get_user_language(user_id)
     access = await check_user_channel_subscription(message.bot, user_id)
     if not access:
