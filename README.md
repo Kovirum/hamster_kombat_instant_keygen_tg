@@ -41,13 +41,13 @@ Hamster Kombat Key Generator is a powerful tool designed to instantly generate a
 
 4. Set the startup method in `config.py`:
     ```py
-   STARTUP_METHODS = StartupMethods.KeygenAndBot # Run both the key generator and the Telegram bot
+   STARTUP_METHOD = StartupMethods.KeygenAndBot # Run both the key generator and the Telegram bot
    ```
    ```py
-   STARTUP_METHODS = StartupMethods.OnlyKeygen   # Run only the key generator
+   STARTUP_METHOD = StartupMethods.OnlyKeygen   # Run only the key generator
    ```
    ```py
-   STARTUP_METHODS = StartupMethods.OnlyBot      # Run only the Telegram bot
+   STARTUP_METHOD = StartupMethods.OnlyBot      # Run only the Telegram bot
    ```
 
 5. Run the application:
