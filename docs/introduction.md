@@ -16,9 +16,8 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 - Twerk Race
 - Polysphere
 - Mow and Trim
-- Cafe Dash
-- Gangs Wars
 - Zoopolis
+- Fluff Crusade
 
 ## Supported Languages
 

@@ -37,23 +37,17 @@ GAME_PROMO_CONFIGS = {
         'eventsDelay': 20,
         'attemptsNumber': 20
     },
-    'CafeDash': {
-        'appToken': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
-        'promoId': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
-        'eventsDelay': 23,
-        'attemptsNumber': 16
-    }, 
-    'GangsWars': {
-        'appToken': 'b6de60a0-e030-48bb-a551-548372493523',
-        'promoId': 'c7821fa7-6632-482c-9635-2bd5798585f9',
-        'eventsDelay': 40,
-        'attemptsNumber': 23
-    }, 
     'Zoopolis': {
         'appToken': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
         'promoId': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
         'eventsDelay': 21,
         'attemptsNumber': 23
+    },
+    'FluffCrusade': {
+        'appToken': '112887b0-a8af-4eb2-ac63-d82df78283d9',
+        'promoId': '112887b0-a8af-4eb2-ac63-d82df78283d9',
+        'eventsDelay': 20,
+        'attemptsNumber': 30
     }
 }
 
