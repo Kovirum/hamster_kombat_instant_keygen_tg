@@ -5,7 +5,7 @@ from typing import Tuple, List
 from pymongo import ReturnDocument
 
 from config import GamePromoTypes, DEFAULT_DAILY_GAME_KEYS_LIMIT, DEFAULT_USER_MULTIPLIER, DEFAULT_LANGUAGE, \
-    REQUEST_BROADCAST_CONFIRM
+    REQUEST_BROADCAST_CONFIRM, GAME_PROMO_CONFIGS
 
 
 class DatabaseUsersData:
@@ -66,7 +66,8 @@ class DatabaseUsersData:
                              and the second element is the total available keys.
         """
         user_doc = await self.init_user(user_id)
-        game_keys_limit = user_doc.get('gkey_limit', DEFAULT_DAILY_GAME_KEYS_LIMIT)
+        game_data = GAME_PROMO_CONFIGS[game.value]
+        game_keys_limit = game_data.get('game_gkey_limit') or user_doc.get('gkey_limit', DEFAULT_DAILY_GAME_KEYS_LIMIT)
         game_keys_limit = int(game_keys_limit * user_doc.get('gkey_multiplier', DEFAULT_USER_MULTIPLIER))
         already_used = len(user_doc['history'].get(game.value, []))
 

@@ -5,7 +5,7 @@ GAME_PROMO_CONFIGS = {
         'appToken': 'd1690a07-3780-4068-810f-9b5bbf2931b2',
         'promoId': 'b4170868-cef0-424f-8eb9-be0622e8e8e3',
         'eventsDelay': 20,
-        'attemptsNumber': 10
+        'attemptsNumber': 10,
     },
     'TrainMiner': {
         'appToken': '82647f43-3f87-402d-88dd-09a90025313f',
@@ -47,7 +47,8 @@ GAME_PROMO_CONFIGS = {
         'appToken': '112887b0-a8af-4eb2-ac63-d82df78283d9',
         'promoId': '112887b0-a8af-4eb2-ac63-d82df78283d9',
         'eventsDelay': 20,
-        'attemptsNumber': 30
+        'attemptsNumber': 30,
+        'game_gkey_limit': 8,
     }
 }
 
@@ -60,7 +61,7 @@ class StartupMethods(enum.Enum):
     OnlyBot = 2
 
 
-STARTUP_METHOD = StartupMethods.KeygenAndBot
+STARTUP_METHOD = StartupMethods.OnlyBot
 
 KEYGEN_THREAD_COUNT = 1
 KEYGEN_GAMES = [g for g in GamePromoTypes]
