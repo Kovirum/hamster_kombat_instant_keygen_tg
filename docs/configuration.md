@@ -92,10 +92,25 @@ Setting the default values involves changing only 3 constants:
    - this constant
    - user key limit (from the formula below) 
    - remaining number of keys in the pool.
-> **Info**
+> **Info:**
 > The key limit is calculation using this formula:
 > ```python
-> user.get("gkey_limit") or DEFAULT_DAILY_GAME_KEYS_LIMIT * user.get("gkey_multiplier") * DEFAULT_USER_MULTIPLIER
+> game_keys_limit = user_game_limits.get('quanity') or user_game_limits_global.get('quanity') or game_data.get('game_gkey_limit') or DEFAULT_DAILY_GAME_KEYS_LIMIT
+> game_keys_limit = int(game_keys_limit * (user_game_limits.get('multiplier') or user_game_limits_global.get('multiplier') or DEFAULT_USER_MULTIPLIER))
+> ```
+
+> **Info:**
+> You can also set the key limit for an individual game by writing it directly to `GAME_PROMO_CONFIGS` by adding the `game_gkey_limit` field to the game object. For example:
+> ```json
+> {
+>   "FluffCrusade": {
+>     "appToken": "112887b0-a8af-4eb2-ac63-d82df78283d9",
+>     "promoId": "112887b0-a8af-4eb2-ac63-d82df78283d9",
+>     "eventsDelay": 20,
+>     "attemptsNumber": 30,
+>     "game_gkey_limit": 8
+>   }
+> }
 > ```
 
 ### Set up a subscription channels:
@@ -184,8 +199,21 @@ The MongoDB instance does not require manual setup. The script will automaticall
           "GameName": ["KEY_1", "KEY_2"]
       },
       "last_used_date": "dd.mm.yyyy",
-      "gkey_limit": 0,
-      "gkey_multiplier": 0
+      "limits": {
+          "Game1": {
+              "quanity": 4,
+              "multiplier": 2
+          },
+          "Game2": {
+              "quanity": 8
+          },
+          "Game3": {
+              "multiplier": 3
+          },
+          "global": {
+              "multiplier": 2
+          }
+      }
   }
   ```
   
@@ -203,7 +231,20 @@ The MongoDB instance does not require manual setup. The script will automaticall
 - `history` - It contains several objects (let's call them `historyObject`). stores the history of all keys received for the current day to calculate the remaining limit and access the history for the user.
 - `historyObject` - An object containing the name of the game as a key, and as a value a list of keys received today in the same format as `keys` from the keys collection
 - `last_used_date` - it contains a timestamp in the format `%d.%m.%Y`. It is automatically updated every day and serves to update the daily key limit and history
-- `gkey_limit` - Optional value. sets a personal key limit for an individual participant. It does not change automatically and can only be set manually. if the field is missing, the value `config.DEFAULT_DAILY_GAME_KEYS_LIMIT` is used
-- `gkey_multiplier` - Optional value. sets a personal key multiplier for an individual participant. It does not change automatically and can only be set manually. if the field is missing, the value `config.DEFAULT_USER_MULTIPLIER` is used
-
+- `limits` - optional field. allows you to set personal limits of daily keys for each user, both for a single game and for all of them together. It is an object containing a number of certain objects, let's call them `gameLimitObject` (it is described below)
+- `gameLimitObject` - an object containing information about the limits for a particular game or all games together. it has the following structure:
+    ```JSON
+    {
+      "GameName": {
+        "quanity": 10,
+        "multiplier": 2
+      }
+    }
+    ```
+    where
+    - `GameName` is the name of the game (exactly like in `GAME_PROMO_CONFIGS`) or `global` if you set a limit for all games,
+    - `quantity` is a field indicating the numerical limit of keys,
+    - `multiplier` is a field indicating the numerical multiplier of the limit of keys
+    > **Info:**
+    Specifying each of their object body parameters (`quantity` and `multiplier`) is optional. I.e. you can specify only one of these parameters. The same applies to the `gameLimitObject` objects themselves. You can specify limits only for individual games, the rest will be calculated based on the `global` object or the total limits for all users.
 

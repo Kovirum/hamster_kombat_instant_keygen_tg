@@ -67,8 +67,10 @@ class DatabaseUsersData:
         """
         user_doc = await self.init_user(user_id)
         game_data = GAME_PROMO_CONFIGS[game.value]
-        game_keys_limit = game_data.get('game_gkey_limit') or user_doc.get('gkey_limit', DEFAULT_DAILY_GAME_KEYS_LIMIT)
-        game_keys_limit = int(game_keys_limit * user_doc.get('gkey_multiplier', DEFAULT_USER_MULTIPLIER))
+        user_game_limits = user_doc.get('limits', {}).get(game.value, {})
+        user_game_limits_global = user_doc.get('limits', {}).get('global', {})
+        game_keys_limit = user_game_limits.get('quanity') or user_game_limits_global.get('quanity') or game_data.get('game_gkey_limit') or DEFAULT_DAILY_GAME_KEYS_LIMIT
+        game_keys_limit = int(game_keys_limit * (user_game_limits.get('multiplier') or user_game_limits_global.get('multiplier') or DEFAULT_USER_MULTIPLIER))
         already_used = len(user_doc['history'].get(game.value, []))
 
         remaining_limit = game_keys_limit - already_used
