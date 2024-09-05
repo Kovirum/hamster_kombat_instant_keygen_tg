@@ -49,6 +49,18 @@ GAME_PROMO_CONFIGS = {
         'eventsDelay': 20,
         'attemptsNumber': 30,
         'game_gkey_limit': 8,
+    },
+    'TileTrio': {
+        'appToken': 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
+        'promoId': 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
+        'eventsDelay': 20,
+        'attemptsNumber': 22
+    },
+    'StoneAge': {
+        'appToken': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
+        'promoId': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
+        'eventsDelay': 20,
+        'attemptsNumber': 20
     }
 }
 
