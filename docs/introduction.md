@@ -17,7 +17,9 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 - Polysphere
 - Mow and Trim
 - Zoopolis
+- Tile Trio
 - Fluff Crusade
+- Stone Age
 
 ## Supported Languages
 
