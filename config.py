@@ -61,6 +61,18 @@ GAME_PROMO_CONFIGS = {
         'promoId': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
         'eventsDelay': 20,
         'attemptsNumber': 20
+    },
+    'Bouncemasters': {
+        'appToken': 'bc72d3b9-8e91-4884-9c33-f72482f0db37',
+        'promoId': 'bc72d3b9-8e91-4884-9c33-f72482f0db37',
+        'eventsDelay': 20,
+        'attemptsNumber': 30
+    },
+    'HideBall': {
+        'appToken': "4bf4966c-4d22-439b-8ff2-dc5ebca1a600",
+        'promoId': "4bf4966c-4d22-439b-8ff2-dc5ebca1a600",
+        'eventsDelay': 30,
+        'attemptsNumber': 20
     }
 }
 

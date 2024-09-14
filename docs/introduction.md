@@ -20,6 +20,8 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 - Tile Trio
 - Fluff Crusade
 - Stone Age
+- Boucemasters
+- Hide Ball
 
 ## Supported Languages
 
