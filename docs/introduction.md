@@ -22,6 +22,8 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 - Stone Age
 - Boucemasters
 - Hide Ball
+- Count Masters
+- Pin Out Master
 
 ## Supported Languages
 
