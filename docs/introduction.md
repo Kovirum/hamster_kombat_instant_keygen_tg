@@ -24,6 +24,9 @@ Hamster Kombat Key Generator is designed to provide an efficient way of generati
 - Hide Ball
 - Count Masters
 - Pin Out Master
+- Among Water 
+- Infected Frontier 
+- Factory World
 
 ## Supported Languages
 

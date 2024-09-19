@@ -85,6 +85,24 @@ GAME_PROMO_CONFIGS = {
         'promoId': 'd2378baf-d617-417a-9d99-d685824335f0',
         'eventsDelay': 20,
         'attemptsNumber': 30
+    },
+    'AmongWater': {
+        'appToken': 'daab8f83-8ea2-4ad0-8dd5-d33363129640',
+        'promoId': 'daab8f83-8ea2-4ad0-8dd5-d33363129640',
+        'attemptsNumber': 20,
+        'eventsDelay': 20
+    },
+    'InfectedFrontier': {
+        'appToken': 'eb518c4b-e448-4065-9d33-06f3039f0fcb',
+        'promoId': 'eb518c4b-e448-4065-9d33-06f3039f0fcb',
+        'attemptsNumber': 20,
+        'eventsDelay': 20
+    },
+    'FactoryWorld' {
+        'appToken': 'd02fc404-8985-4305-87d8-32bd4e66bb16',
+        'promoId': 'd02fc404-8985-4305-87d8-32bd4e66bb16',
+        'attemptsNumber': 20,
+        'eventsDelay': 30
     }
 }
 
